@@ -7,6 +7,7 @@ const cors = require('cors')
 const PORT  = process.env.PORT || 3000;
 const aiRoutes = require('./routes/ai.routes')
 const authRoute = require('./routes/authRoutes')
+const codeRoute = require('./routes/Coderoutes')
 
 app.use(express.json())
 dotenv.config()
@@ -26,6 +27,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use('/api/auth',authRoute);
 app.use('/ai',aiRoutes);
+app.use('/code',codeRoute);
 
 app.use('/',(req,res)=>{
     res.send("Hello World")

@@ -13,7 +13,11 @@ const userSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true
-    }
+    },
+    codeFile:{
+         type:mongoose.Schema.Types.ObjectId,
+        ref:'CodeFile',
+    },
 });
 
 module.exports = mongoose.model("User",userSchema)
