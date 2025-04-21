@@ -12,7 +12,6 @@ const saveCode = async(req,res)=>{
             code,
             user:req.user.id,
         });
-        console.log(newFile);
         await newFile.save();
         res.status(201).json({message:'File saved successfully'});
     }catch(err){
