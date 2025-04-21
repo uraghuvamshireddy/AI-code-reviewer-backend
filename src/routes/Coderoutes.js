@@ -6,5 +6,6 @@ const router = express.Router();
 router.post('/save-code',verifyToken,codecon.saveCode);
 router.get('/files',verifyToken,codecon.history)
 router.get('/file/:id',verifyToken,codecon.filebyId);
+router.delete('/delete-file/:id',verifyToken,codecon.deleteFile);
 
 module.exports = router;

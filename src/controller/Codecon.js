@@ -48,4 +48,23 @@ const filebyId = async(req,res)=>{
     }
 }
 
-module.exports = {saveCode,history,filebyId};
+const deleteFile = async (req,res)=>{
+      try{
+        const id = req.params.id;
+      const file = await CodeFile.findById(id);
+      if(!file){
+        return res.status(404).json({message:'File not found'});
+      }
+       if (file.user.toString() !== req.user.id) {
+        return res.status(403).json({ message: 'Access Denied' });
+      }
+      await file.deleteOne();
+      res.status(200).json({message:'File deleted successfully'});
+
+}catch(err){
+    console.error(err);
+    res.status(500).json({message:'Error in fetching the file'});
+}
+}
+
+module.exports = {saveCode,history,filebyId,deleteFile};

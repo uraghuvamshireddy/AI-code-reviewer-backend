@@ -12,9 +12,10 @@ const codeRoute = require('./routes/Coderoutes')
 app.use(express.json())
 dotenv.config()
 app.use(cors({
-    origin: "http://localhost:5173", 
-    methods: "GET,POST",
-    credentials: true
+    origin: "*", 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+     credentials: true
   }));
 app.use(bodyParser.json())
 
